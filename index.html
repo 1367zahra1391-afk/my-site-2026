@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="wiَdth=device-width, initial-scale=1.0">
+    <title>دبیرستان پسرانه امید آینده</title>
+    
+    <!-- اضافه کردن فونت وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <!-- اضافه کردن آیکون‌های FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- اضافه کردن Tailwind CSS برای استایل‌دهی -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- پیکربندی Tailwind برای فونت و رنگ‌های سفارشی -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        school: {
+                            light: '#3b82f6', // آبی روشن
+                            DEFAULT: '#1d4ed8', // آبی استاندارد
+                            dark: '#1e3a8a', // سرمه ای تیره
+                            accent: '#f59e0b' // زرد/نارنجی برای دکمه‌ها و تاکیدها
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- استایل‌های سفارشی تکمیلی -->
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* افکت شیشه‌ای برای منو */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* افکت هاور برای کارت‌ها */
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(29, 78, 216, 0.2);
+        }
+        
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-school-light selection:text-white">
+
+    <!-- هدر و نویگیشن (منو) -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- لوگو و نام مدرسه -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-12 h-12 bg-school-dark rounded-lg flex items-center justify-center text-white text-2xl shadow-lg">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-xl text-school-dark">دبیرستان امید آینده</h1>
+                        <p class="text-xs text-slate-500 font-medium">مدرسه نمونه پسرانه</p>
+                    </div>
+                </div>
+
+                <!-- منوی دسکتاپ -->
+                <nav class="hidden md:flex space-x-reverse space-x-8">
+                    <a href="#home" class="text-school-dark font-bold hover:text-school-light transition-colors">صفحه اصلی</a>
+                    <a href="#about" class="text-slate-600 font-medium hover:text-school-light transition-colors">درباره ما</a>
+                    <a href="#facilities" class="text-slate-600 font-medium hover:text-school-light transition-colors">امکانات</a>
+                    <a href="#news" class="text-slate-600 font-medium hover:text-school-light transition-colors">اخبار و رویدادها</a>
+                    <a href="#contact" class="text-slate-600 font-medium hover:text-school-light transition-colors">تماس با ما</a>
+                </nav>
+
+                <!-- دکمه ثبت نام -->
+                <div class="hidden md:block">
+                    <a href="#register" class="bg-school-accent hover:bg-yellow-500 text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-yellow-500/30 transition-all transform hover:scale-105">
+                        پیش ثبت‌نام
+                    </a>
+                </div>
+
+                <!-- دکمه منوی موبایل -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-school-dark focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- منوی موبایل (کشویی) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#home" class="block px-3 py-3 rounded-md text-base font-bold text-school-dark bg-blue-50">صفحه اصلی</a>
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-school-dark">درباره ما</a>
+                <a href="#facilities" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-school-dark">امکانات</a>
+                <a href="#news" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-school-dark">اخبار و رویدادها</a>
+                <a href="#contact" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-school-dark">تماس با ما</a>
+                <a href="#register" class="block mt-4 px-3 py-3 text-center rounded-md text-base font-bold text-white bg-school-accent hover:bg-yellow-500 shadow-md">پیش ثبت‌نام</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- بخش هیرو (معرفی اصلی) -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- تصویر پس زمینه با کاور تیره -->
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop" alt="دانش آموزان مدرسه" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-r from-school-dark/90 to-school-DEFAULT/80 mix-blend-multiply"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl text-white">
+                <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-sm font-bold mb-6">سال تحصیلی ۱۴۰۳-۱۴۰۴</span>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                    ساختن آینده‌ای روشن <br> برای پسران ایران زمین
+                </h2>
+                <p class="text-lg md:text-xl text-blue-100 mb-10 leading-relaxed max-w-2xl">
+                    مدرسه امید آینده با بهره‌گیری از کادری مجرب، امکانات ورزشی و علمی پیشرفته، محیطی پویا و با نشاط برای یادگیری و رشد همه‌جانبه فرزند شما فراهم می‌کند.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#register" class="bg-school-accent hover:bg-yellow-400 text-school-dark text-center px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user-plus"></i>
+                        ثبت‌نام و پذیرش
+                    </a>
+                    <a href="#about" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white text-center px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play"></i>
+                        آشنایی بیشتر
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- شکل موج در پایین هیرو -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <svg class="relative block w-full h-[50px] lg:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.85,130.23,201.5,122.9,241.14,118.82,279.52,99.96,321.39,56.44Z" fill="#f8fafc"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- آمار و ارقام (شمارنده‌ها) -->
+    <section class="py-12 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+                <!-- آیتم آمار 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 text-school-DEFAULT rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="text-3xl font-extrabold text-school-dark mb-1"><span class="counter" data-target="850">0</span>+</div>
+                    <div class="text-sm font-medium text-slate-500">دانش‌آموز فعال</div>
+                </div>
+                <!-- آیتم آمار 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 text-school-DEFAULT rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <div class="text-3xl font-extrabold text-school-dark mb-1"><span class="counter" data-target="65">0</span>+</div>
+                    <div class="text-sm font-medium text-slate-500">معلم و کادر مجرب</div>
+                </div>
+                <!-- آیتم آمار 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 text-school-DEFAULT rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="text-3xl font-extrabold text-school-dark mb-1"><span class="counter" data-target="120">0</span>+</div>
+                    <div class="text-sm font-medium text-slate-500">مقام ورزشی و علمی</div>
+                </div>
+                <!-- آیتم آمار 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 text-school-DEFAULT rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <div class="text-3xl font-extrabold text-school-dark mb-1"><span class="counter" data-target="25">0</span></div>
+                    <div class="text-sm font-medium text-slate-500">سال سابقه آموزشی</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش درباره ما -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop" alt="دانش آموزان در کلاس" class="rounded-2xl shadow-2xl z-10 relative">
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-school-accent rounded-full -z-0"></div>
+                        <div class="absolute -top-6 -left-6 w-32 h-32 border-4 border-school-DEFAULT rounded-full -z-0 opacity-50"></div>
+                        <!-- نشان اعتبار -->
+                        <div class="absolute -bottom-10 left-10 bg-white p-4 rounded-xl shadow-xl flex items-center gap-4 z-20">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-certificate"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-school-dark">مدرسه برتر</div>
+                                <div class="text-xs text-slate-500">در سطح استان</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="inline-block py-1 px-3 rounded-lg bg-blue-50 text-school-DEFAULT text-sm font-bold mb-4">درباره امید آینده</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-school-dark mb-6 leading-tight">پرورش مردان آینده با رویکردی نوین و اخلاق‌مدار</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed text-justify">
+                        مدرسه پسرانه امید آینده با بیش از دو دهه تجربه در عرصه آموزش و پرورش، همواره تلاش کرده است تا محیطی سالم، با نشاط و علمی را برای پسران این مرز و بوم فراهم آورد. ما معتقدیم که هر دانش‌آموز استعدادی منحصر به فرد دارد که با هدایت صحیح می‌تواند به شکوفایی برسد.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-school-DEFAULT"><i class="fa-solid fa-circle-check"></i></div>
+                            <span class="text-slate-700 font-medium">بهره‌گیری از جدیدترین متدهای آموزشی روز دنیا</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-school-DEFAULT"><i class="fa-solid fa-circle-check"></i></div>
+                            <span class="text-slate-700 font-medium">توجه ویژه به ورزش، سلامت جسمانی و روانی دانش‌آموزان</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-school-DEFAULT"><i class="fa-solid fa-circle-check"></i></div>
+                            <span class="text-slate-700 font-medium">برگزاری کلاس‌های فوق برنامه (رباتیک، برنامه‌نویسی، زبان)</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-school-DEFAULT font-bold hover:text-school-dark transition-colors border-b-2 border-school-DEFAULT pb-1">
+                        ارتباط با مدیریت <i class="fa-solid fa-arrow-left text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش امکانات -->
+    <section id="facilities" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="inline-block py-1 px-3 rounded-lg bg-blue-50 text-school-DEFAULT text-sm font-bold mb-4">امکانات مدرسه</div>
+                <h2 class="text-3xl md:text-4xl font-bold text-school-dark mb-4">محیطی مجهز برای یادگیری بهتر</h2>
+                <p class="text-slate-600">ما بهترین امکانات را برای رشد علمی، ورزشی و فرهنگی دانش‌آموزانمان فراهم کرده‌ایم.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- کارت امکانات 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 feature-card transition-all">
+                    <img src="https://images.unsplash.com/photo-1576669801775-ff43c5ab079d?q=80&w=2070&auto=format&fit=crop" alt="سالن ورزشی" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-school-DEFAULT text-white rounded-xl flex items-center justify-center text-xl mb-4 -mt-12 relative shadow-lg border-4 border-white">
+                            <i class="fa-solid fa-basketball"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-school-dark mb-2">سالن ورزشی چندمنظوره</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">سالن سرپوشیده مجهز برای فوتسال، والیبال، بسکتبال و همچنین امکانات پینگ‌پنگ و فوتبال دستی برای زنگ‌های تفریح.</p>
+                    </div>
+                </div>
+
+                <!-- کارت امکانات 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 feature-card transition-all">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop" alt="آزمایشگاه علوم" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-school-DEFAULT text-white rounded-xl flex items-center justify-center text-xl mb-4 -mt-12 relative shadow-lg border-4 border-white">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-school-dark mb-2">آزمایشگاه فیزیک و شیمی</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">آزمایشگاه‌های مجهز به جدیدترین وسایل کمک آموزشی برای انجام عملی آزمایش‌های کتب درسی و درک بهتر مفاهیم.</p>
+                    </div>
+                </div>
+
+                <!-- کارت امکانات 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 feature-card transition-all">
+                    <img src="https://images.unsplash.com/photo-1503945438517-f65904a52ce6?q=80&w=2070&auto=format&fit=crop" alt="سایت کامپیوتر" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-school-DEFAULT text-white rounded-xl flex items-center justify-center text-xl mb-4 -mt-12 relative shadow-lg border-4 border-white">
+                            <i class="fa-solid fa-computer"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-school-dark mb-2">سایت کامپیوتر هوشمند</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">سایت رایانه مجهز به سیستم‌های قدرتمند جهت برگزاری کلاس‌های آموزش برنامه‌نویسی، رباتیک و مهارت‌های ICDL.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش اخبار و اطلاعیه ها -->
+    <section id="news" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <div class="inline-block py-1 px-3 rounded-lg bg-blue-50 text-school-DEFAULT text-sm font-bold mb-4">تازه‌ها</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-school-dark">اخبار و رویدادهای مدرسه</h2>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center gap-2 text-school-DEFAULT font-bold hover:text-school-dark transition-colors">
+                    مشاهده همه اخبار <i class="fa-solid fa-arrow-left text-sm"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- خبر 1 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-xl mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1546410531-bea5aad028af?q=80&w=2070&auto=format&fit=crop" alt="اردوی مدرسه" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-school-accent text-white text-xs font-bold px-2 py-1 rounded">اردوها</div>
+                    </div>
+                    <div class="text-xs text-slate-500 mb-2 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar"></i> ۲۴ مهر ۱۴۰۳
+                    </div>
+                    <h3 class="font-bold text-school-dark text-lg mb-2 group-hover:text-school-DEFAULT transition-colors">برگزاری اردوی تفریحی ورزشی در مجتمع چمران</h3>
+                    <p class="text-sm text-slate-600 line-clamp-2">اردوی تفریحی دانش‌آموزان پایه هشتم با هدف افزایش نشاط و کار گروهی برگزار گردید...</p>
+                </div>
+
+                <!-- خبر 2 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-xl mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop" alt="المپیاد علمی" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-school-DEFAULT text-white text-xs font-bold px-2 py-1 rounded">علمی</div>
+                    </div>
+                    <div class="text-xs text-slate-500 mb-2 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar"></i> ۱۲ مهر ۱۴۰۳
+                    </div>
+                    <h3 class="font-bold text-school-dark text-lg mb-2 group-hover:text-school-DEFAULT transition-colors">کسب مقام اول در المپیاد ریاضی منطقه</h3>
+                    <p class="text-sm text-slate-600 line-clamp-2">دانش‌آموزان تیم المپیاد ریاضی مدرسه موفق به کسب رتبه نخست در سطح منطقه شدند.</p>
+                </div>
+
+                <!-- خبر 3 (بدون عکس - اطلاعیه) -->
+                <div class="bg-blue-50 rounded-xl p-6 flex flex-col justify-between group cursor-pointer border border-blue-100 hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="inline-block bg-school-dark text-white text-xs font-bold px-2 py-1 rounded mb-4">اطلاعیه آموزشی</div>
+                        <h3 class="font-bold text-school-dark text-lg mb-3">آغاز ثبت‌نام کلاس‌های فوق برنامه ترم پاییز</h3>
+                        <p class="text-sm text-slate-600 mb-4">اولیاء گرامی می‌توانند جهت ثبت‌نام فرزندان خود در کلاس‌های رباتیک و زبان انگلیسی از طریق پورتال اقدام نمایند.</p>
+                    </div>
+                    <div class="text-sm font-bold text-school-DEFAULT group-hover:translate-x-[-5px] transition-transform flex items-center gap-2">
+                        ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+
+                <!-- خبر 4 (بدون عکس - اطلاعیه انجمن اولیا) -->
+                <div class="bg-slate-100 rounded-xl p-6 flex flex-col justify-between group cursor-pointer border border-slate-200 hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="inline-block bg-slate-600 text-white text-xs font-bold px-2 py-1 rounded mb-4">انجمن اولیا و مربیان</div>
+                        <h3 class="font-bold text-school-dark text-lg mb-3">برگزاری اولین مجمع عمومی انجمن اولیا</h3>
+                        <p class="text-sm text-slate-600 mb-4">جلسه انتخابات اعضای انجمن اولیا و مربیان در روز دوشنبه ساعت ۱۶ در سالن اجتماعات برگزار می‌گردد.</p>
+                    </div>
+                    <div class="text-sm font-bold text-slate-700 group-hover:translate-x-[-5px] transition-transform flex items-center gap-2">
+                        ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- دکمه مشاهده همه برای موبایل -->
+            <div class="mt-8 text-center md:hidden">
+                <a href="#" class="inline-block border border-school-DEFAULT text-school-DEFAULT hover:bg-school-DEFAULT hover:text-white px-6 py-2 rounded-lg font-bold transition-colors">مشاهده همه اخبار</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش تماس و ثبت نام سریع -->
+    <section id="contact" class="py-20 bg-school-dark relative overflow-hidden">
+        <!-- الگوهای پس‌زمینه -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-school-DEFAULT rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-school-light rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-x-1/2 translate-y-1/2"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 lg:p-12">
+                
+                <!-- اطلاعات تماس -->
+                <div class="w-full lg:w-5/12 text-white">
+                    <h2 class="text-3xl font-bold mb-6">با ما در ارتباط باشید</h2>
+                    <p class="text-blue-100 mb-8 leading-relaxed">
+                        برای دریافت مشاوره تحصیلی، اطلاع از شرایط ثبت‌نام و یا هماهنگی جهت بازدید از مدرسه، با ما تماس بگیرید. مشاوران ما صمیمانه پاسخگوی شما هستند.
+                    </p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-location-dot text-school-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">آدرس مدرسه</h4>
+                                <p class="text-sm text-blue-100">تهران، خیابان ولیعصر، نرسیده به تجریش، خیابان آموزش، پلاک ۱۲</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-phone text-school-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">شماره‌های تماس</h4>
+                                <p class="text-sm text-blue-100" dir="ltr">+98 21 1234 5678 <br> +98 21 8765 4321</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-envelope text-school-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">پست الکترونیک</h4>
+                                <p class="text-sm text-blue-100 font-sans">info@omidayandeh.school</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- فرم پیش ثبت نام -->
+                <div id="register" class="w-full lg:w-7/12 bg-white rounded-2xl p-6 lg:p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold text-school-dark mb-2">فرم درخواست پیش ثبت‌نام</h3>
+                    <p class="text-slate-500 text-sm mb-6">لطفاً اطلاعات زیر را تکمیل کنید تا کارشناسان ما با شما تماس بگیرند.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('اطلاعات شما با موفقیت ثبت شد. به زودی با شما تماس خواهیم گرفت.');">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">نام و نام خانوادگی دانش‌آموز</label>
+                                <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all" placeholder="مثلا: علی محمدی" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">پایه تحصیلی مورد تقاضا</label>
+                                <select class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all bg-white" required>
+                                    <option value="">انتخاب کنید...</option>
+                                    <option value="7">پایه هفتم (دوره اول)</option>
+                                    <option value="8">پایه هشتم (دوره اول)</option>
+                                    <option value="9">پایه نهم (دوره اول)</option>
+                                    <option value="10">پایه دهم (دوره دوم)</option>
+                                    <option value="11">پایه یازدهم (دوره دوم)</option>
+                                    <option value="12">پایه دوازدهم (دوره دوم)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">نام ولی / سرپرست</label>
+                                <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">شماره موبایل</label>
+                                <input type="tel" dir="ltr" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all text-right" placeholder="0912..." required>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-slate-700 mb-1">توضیحات تکمیلی (اختیاری)</label>
+                            <textarea rows="3" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-school-DEFAULT hover:bg-school-dark text-white font-bold py-3 rounded-lg shadow-md transition-colors">
+                            ثبت درخواست
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- درباره -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white text-xl">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h2 class="font-bold text-xl text-white">امید آینده</h2>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6">
+                        مدرسه‌ای برای ساختن فردا. ما با تمرکز بر آموزش نوین، تربیت صحیح و استعدادیابی، نسلی توانمند و با اخلاق را برای آینده ایران پرورش می‌دهیم.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-school-DEFAULT hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-school-DEFAULT hover:text-white transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-school-DEFAULT hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- دسترسی سریع -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                        دسترسی سریع
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-school-accent -mb-2 rounded-full"></span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> صفحه اصلی</a></li>
+                        <li><a href="#about" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> درباره مدرسه</a></li>
+                        <li><a href="#facilities" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> امکانات آموزشی</a></li>
+                        <li><a href="#news" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> اخبار و اطلاعیه‌ها</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> قوانین و مقررات</a></li>
+                    </ul>
+                </div>
+
+                <!-- لینک های مفید -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                        پیوندهای مفید
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-school-accent -mb-2 rounded-full"></span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-link text-xs text-school-DEFAULT ml-2"></i> وزارت آموزش و پرورش</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-link text-xs text-school-DEFAULT ml-2"></i> پورتال همگام</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-link text-xs text-school-DEFAULT ml-2"></i> شبکه آموزشی شاد</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-link text-xs text-school-DEFAULT ml-2"></i> سامانه سیدا</a></li>
+                    </ul>
+                </div>
+                
+                <!-- ساعات کاری -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                        ساعات کاری مدرسه
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-school-accent -mb-2 rounded-full"></span>
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>شنبه تا چهارشنبه</span>
+                            <span class="text-white font-sans" dir="ltr">07:00 - 15:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>پنجشنبه (کلاس‌های فوق‌برنامه)</span>
+                            <span class="text-white font-sans" dir="ltr">08:00 - 12:00</span>
+                        </li>
+                        <li class="flex justify-between text-rose-400 pb-2">
+                            <span>جمعه‌ها و ایام تعطیل</span>
+                            <span>تعطیل</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- کپی رایت -->
+            <div class="border-t border-slate-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; ۱۴۰۳ تمامی حقوق برای دبیرستان پسرانه امید آینده محفوظ است.</p>
+                <p class="mt-4 md:mt-0 text-slate-500">طراحی و توسعه با ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- کدهای جاوا اسکریپت -->
+    <script>
+        // کنترل منوی موبایل
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+
+        // بستن منوی موبایل با کلیک روی لینک ها
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // تغییر استایل هدر هنگام اسکرول
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('glass-nav', 'py-0');
+                navbar.classList.remove('py-2');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-0');
+                navbar.classList.add('py-2');
+            }
+        });
+
+        // انیمیشن شمارنده ها (اعداد)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 100; // سرعت پر شدن عدد
+
+        // استفاده از Intersection Observer برای اجرای انیمیشن فقط زمانی که عنصر دیده شود
+        const observeCounters = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 15);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    
+                    updateCount();
+                    observer.unobserve(counter); // توقف مانیتور کردن پس از اجرای انیمیشن
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            observeCounters.observe(counter);
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="wiَdth=device-width, initial-scale=1.0">
+    <title>دبیرستان پسرانه امید آینده</title>
+    
+    <!-- اضافه کردن فونت وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <!-- اضافه کردن آیکون‌های FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- اضافه کردن Tailwind CSS برای استایل‌دهی -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- پیکربندی Tailwind برای فونت و رنگ‌های سفارشی -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        school: {
+                            light: '#3b82f6', // آبی روشن
+                            DEFAULT: '#1d4ed8', // آبی استاندارد
+                            dark: '#1e3a8a', // سرمه ای تیره
+                            accent: '#f59e0b' // زرد/نارنجی برای دکمه‌ها و تاکیدها
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- استایل‌های سفارشی تکمیلی -->
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* افکت شیشه‌ای برای منو */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* افکت هاور برای کارت‌ها */
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(29, 78, 216, 0.2);
+        }
+        
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-school-light selection:text-white">
+
+    <!-- هدر و نویگیشن (منو) -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- لوگو و نام مدرسه -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-12 h-12 bg-school-dark rounded-lg flex items-center justify-center text-white text-2xl shadow-lg">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-xl text-school-dark">دبیرستان امید آینده</h1>
+                        <p class="text-xs text-slate-500 font-medium">مدرسه نمونه پسرانه</p>
+                    </div>
+                </div>
+
+                <!-- منوی دسکتاپ -->
+                <nav class="hidden md:flex space-x-reverse space-x-8">
+                    <a href="#home" class="text-school-dark font-bold hover:text-school-light transition-colors">صفحه اصلی</a>
+                    <a href="#about" class="text-slate-600 font-medium hover:text-school-light transition-colors">درباره ما</a>
+                    <a href="#facilities" class="text-slate-600 font-medium hover:text-school-light transition-colors">امکانات</a>
+                    <a href="#news" class="text-slate-600 font-medium hover:text-school-light transition-colors">اخبار و رویدادها</a>
+                    <a href="#contact" class="text-slate-600 font-medium hover:text-school-light transition-colors">تماس با ما</a>
+                </nav>
+
+                <!-- دکمه ثبت نام -->
+                <div class="hidden md:block">
+                    <a href="#register" class="bg-school-accent hover:bg-yellow-500 text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-yellow-500/30 transition-all transform hover:scale-105">
+                        پیش ثبت‌نام
+                    </a>
+                </div>
+
+                <!-- دکمه منوی موبایل -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-school-dark focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- منوی موبایل (کشویی) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#home" class="block px-3 py-3 rounded-md text-base font-bold text-school-dark bg-blue-50">صفحه اصلی</a>
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-school-dark">درباره ما</a>
+                <a href="#facilities" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-school-dark">امکانات</a>
+                <a href="#news" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-school-dark">اخبار و رویدادها</a>
+                <a href="#contact" class="block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-school-dark">تماس با ما</a>
+                <a href="#register" class="block mt-4 px-3 py-3 text-center rounded-md text-base font-bold text-white bg-school-accent hover:bg-yellow-500 shadow-md">پیش ثبت‌نام</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- بخش هیرو (معرفی اصلی) -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- تصویر پس زمینه با کاور تیره -->
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop" alt="دانش آموزان مدرسه" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-r from-school-dark/90 to-school-DEFAULT/80 mix-blend-multiply"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl text-white">
+                <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-sm font-bold mb-6">سال تحصیلی ۱۴۰۳-۱۴۰۴</span>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                    ساختن آینده‌ای روشن <br> برای پسران ایران زمین
+                </h2>
+                <p class="text-lg md:text-xl text-blue-100 mb-10 leading-relaxed max-w-2xl">
+                    مدرسه امید آینده با بهره‌گیری از کادری مجرب، امکانات ورزشی و علمی پیشرفته، محیطی پویا و با نشاط برای یادگیری و رشد همه‌جانبه فرزند شما فراهم می‌کند.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#register" class="bg-school-accent hover:bg-yellow-400 text-school-dark text-center px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user-plus"></i>
+                        ثبت‌نام و پذیرش
+                    </a>
+                    <a href="#about" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white text-center px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play"></i>
+                        آشنایی بیشتر
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- شکل موج در پایین هیرو -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <svg class="relative block w-full h-[50px] lg:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.85,130.23,201.5,122.9,241.14,118.82,279.52,99.96,321.39,56.44Z" fill="#f8fafc"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- آمار و ارقام (شمارنده‌ها) -->
+    <section class="py-12 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+                <!-- آیتم آمار 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 text-school-DEFAULT rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="text-3xl font-extrabold text-school-dark mb-1"><span class="counter" data-target="850">0</span>+</div>
+                    <div class="text-sm font-medium text-slate-500">دانش‌آموز فعال</div>
+                </div>
+                <!-- آیتم آمار 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 text-school-DEFAULT rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <div class="text-3xl font-extrabold text-school-dark mb-1"><span class="counter" data-target="65">0</span>+</div>
+                    <div class="text-sm font-medium text-slate-500">معلم و کادر مجرب</div>
+                </div>
+                <!-- آیتم آمار 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 text-school-DEFAULT rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="text-3xl font-extrabold text-school-dark mb-1"><span class="counter" data-target="120">0</span>+</div>
+                    <div class="text-sm font-medium text-slate-500">مقام ورزشی و علمی</div>
+                </div>
+                <!-- آیتم آمار 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 text-school-DEFAULT rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <div class="text-3xl font-extrabold text-school-dark mb-1"><span class="counter" data-target="25">0</span></div>
+                    <div class="text-sm font-medium text-slate-500">سال سابقه آموزشی</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش درباره ما -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop" alt="دانش آموزان در کلاس" class="rounded-2xl shadow-2xl z-10 relative">
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-school-accent rounded-full -z-0"></div>
+                        <div class="absolute -top-6 -left-6 w-32 h-32 border-4 border-school-DEFAULT rounded-full -z-0 opacity-50"></div>
+                        <!-- نشان اعتبار -->
+                        <div class="absolute -bottom-10 left-10 bg-white p-4 rounded-xl shadow-xl flex items-center gap-4 z-20">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-certificate"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-school-dark">مدرسه برتر</div>
+                                <div class="text-xs text-slate-500">در سطح استان</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="inline-block py-1 px-3 rounded-lg bg-blue-50 text-school-DEFAULT text-sm font-bold mb-4">درباره امید آینده</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-school-dark mb-6 leading-tight">پرورش مردان آینده با رویکردی نوین و اخلاق‌مدار</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed text-justify">
+                        مدرسه پسرانه امید آینده با بیش از دو دهه تجربه در عرصه آموزش و پرورش، همواره تلاش کرده است تا محیطی سالم، با نشاط و علمی را برای پسران این مرز و بوم فراهم آورد. ما معتقدیم که هر دانش‌آموز استعدادی منحصر به فرد دارد که با هدایت صحیح می‌تواند به شکوفایی برسد.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-school-DEFAULT"><i class="fa-solid fa-circle-check"></i></div>
+                            <span class="text-slate-700 font-medium">بهره‌گیری از جدیدترین متدهای آموزشی روز دنیا</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-school-DEFAULT"><i class="fa-solid fa-circle-check"></i></div>
+                            <span class="text-slate-700 font-medium">توجه ویژه به ورزش، سلامت جسمانی و روانی دانش‌آموزان</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-school-DEFAULT"><i class="fa-solid fa-circle-check"></i></div>
+                            <span class="text-slate-700 font-medium">برگزاری کلاس‌های فوق برنامه (رباتیک، برنامه‌نویسی، زبان)</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-school-DEFAULT font-bold hover:text-school-dark transition-colors border-b-2 border-school-DEFAULT pb-1">
+                        ارتباط با مدیریت <i class="fa-solid fa-arrow-left text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش امکانات -->
+    <section id="facilities" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="inline-block py-1 px-3 rounded-lg bg-blue-50 text-school-DEFAULT text-sm font-bold mb-4">امکانات مدرسه</div>
+                <h2 class="text-3xl md:text-4xl font-bold text-school-dark mb-4">محیطی مجهز برای یادگیری بهتر</h2>
+                <p class="text-slate-600">ما بهترین امکانات را برای رشد علمی، ورزشی و فرهنگی دانش‌آموزانمان فراهم کرده‌ایم.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- کارت امکانات 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 feature-card transition-all">
+                    <img src="https://images.unsplash.com/photo-1576669801775-ff43c5ab079d?q=80&w=2070&auto=format&fit=crop" alt="سالن ورزشی" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-school-DEFAULT text-white rounded-xl flex items-center justify-center text-xl mb-4 -mt-12 relative shadow-lg border-4 border-white">
+                            <i class="fa-solid fa-basketball"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-school-dark mb-2">سالن ورزشی چندمنظوره</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">سالن سرپوشیده مجهز برای فوتسال، والیبال، بسکتبال و همچنین امکانات پینگ‌پنگ و فوتبال دستی برای زنگ‌های تفریح.</p>
+                    </div>
+                </div>
+
+                <!-- کارت امکانات 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 feature-card transition-all">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop" alt="آزمایشگاه علوم" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-school-DEFAULT text-white rounded-xl flex items-center justify-center text-xl mb-4 -mt-12 relative shadow-lg border-4 border-white">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-school-dark mb-2">آزمایشگاه فیزیک و شیمی</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">آزمایشگاه‌های مجهز به جدیدترین وسایل کمک آموزشی برای انجام عملی آزمایش‌های کتب درسی و درک بهتر مفاهیم.</p>
+                    </div>
+                </div>
+
+                <!-- کارت امکانات 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 feature-card transition-all">
+                    <img src="https://images.unsplash.com/photo-1503945438517-f65904a52ce6?q=80&w=2070&auto=format&fit=crop" alt="سایت کامپیوتر" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-school-DEFAULT text-white rounded-xl flex items-center justify-center text-xl mb-4 -mt-12 relative shadow-lg border-4 border-white">
+                            <i class="fa-solid fa-computer"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-school-dark mb-2">سایت کامپیوتر هوشمند</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">سایت رایانه مجهز به سیستم‌های قدرتمند جهت برگزاری کلاس‌های آموزش برنامه‌نویسی، رباتیک و مهارت‌های ICDL.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش اخبار و اطلاعیه ها -->
+    <section id="news" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <div class="inline-block py-1 px-3 rounded-lg bg-blue-50 text-school-DEFAULT text-sm font-bold mb-4">تازه‌ها</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-school-dark">اخبار و رویدادهای مدرسه</h2>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center gap-2 text-school-DEFAULT font-bold hover:text-school-dark transition-colors">
+                    مشاهده همه اخبار <i class="fa-solid fa-arrow-left text-sm"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- خبر 1 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-xl mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1546410531-bea5aad028af?q=80&w=2070&auto=format&fit=crop" alt="اردوی مدرسه" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-school-accent text-white text-xs font-bold px-2 py-1 rounded">اردوها</div>
+                    </div>
+                    <div class="text-xs text-slate-500 mb-2 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar"></i> ۲۴ مهر ۱۴۰۳
+                    </div>
+                    <h3 class="font-bold text-school-dark text-lg mb-2 group-hover:text-school-DEFAULT transition-colors">برگزاری اردوی تفریحی ورزشی در مجتمع چمران</h3>
+                    <p class="text-sm text-slate-600 line-clamp-2">اردوی تفریحی دانش‌آموزان پایه هشتم با هدف افزایش نشاط و کار گروهی برگزار گردید...</p>
+                </div>
+
+                <!-- خبر 2 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-xl mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop" alt="المپیاد علمی" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-school-DEFAULT text-white text-xs font-bold px-2 py-1 rounded">علمی</div>
+                    </div>
+                    <div class="text-xs text-slate-500 mb-2 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar"></i> ۱۲ مهر ۱۴۰۳
+                    </div>
+                    <h3 class="font-bold text-school-dark text-lg mb-2 group-hover:text-school-DEFAULT transition-colors">کسب مقام اول در المپیاد ریاضی منطقه</h3>
+                    <p class="text-sm text-slate-600 line-clamp-2">دانش‌آموزان تیم المپیاد ریاضی مدرسه موفق به کسب رتبه نخست در سطح منطقه شدند.</p>
+                </div>
+
+                <!-- خبر 3 (بدون عکس - اطلاعیه) -->
+                <div class="bg-blue-50 rounded-xl p-6 flex flex-col justify-between group cursor-pointer border border-blue-100 hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="inline-block bg-school-dark text-white text-xs font-bold px-2 py-1 rounded mb-4">اطلاعیه آموزشی</div>
+                        <h3 class="font-bold text-school-dark text-lg mb-3">آغاز ثبت‌نام کلاس‌های فوق برنامه ترم پاییز</h3>
+                        <p class="text-sm text-slate-600 mb-4">اولیاء گرامی می‌توانند جهت ثبت‌نام فرزندان خود در کلاس‌های رباتیک و زبان انگلیسی از طریق پورتال اقدام نمایند.</p>
+                    </div>
+                    <div class="text-sm font-bold text-school-DEFAULT group-hover:translate-x-[-5px] transition-transform flex items-center gap-2">
+                        ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+
+                <!-- خبر 4 (بدون عکس - اطلاعیه انجمن اولیا) -->
+                <div class="bg-slate-100 rounded-xl p-6 flex flex-col justify-between group cursor-pointer border border-slate-200 hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="inline-block bg-slate-600 text-white text-xs font-bold px-2 py-1 rounded mb-4">انجمن اولیا و مربیان</div>
+                        <h3 class="font-bold text-school-dark text-lg mb-3">برگزاری اولین مجمع عمومی انجمن اولیا</h3>
+                        <p class="text-sm text-slate-600 mb-4">جلسه انتخابات اعضای انجمن اولیا و مربیان در روز دوشنبه ساعت ۱۶ در سالن اجتماعات برگزار می‌گردد.</p>
+                    </div>
+                    <div class="text-sm font-bold text-slate-700 group-hover:translate-x-[-5px] transition-transform flex items-center gap-2">
+                        ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- دکمه مشاهده همه برای موبایل -->
+            <div class="mt-8 text-center md:hidden">
+                <a href="#" class="inline-block border border-school-DEFAULT text-school-DEFAULT hover:bg-school-DEFAULT hover:text-white px-6 py-2 rounded-lg font-bold transition-colors">مشاهده همه اخبار</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش تماس و ثبت نام سریع -->
+    <section id="contact" class="py-20 bg-school-dark relative overflow-hidden">
+        <!-- الگوهای پس‌زمینه -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-school-DEFAULT rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-school-light rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-x-1/2 translate-y-1/2"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 lg:p-12">
+                
+                <!-- اطلاعات تماس -->
+                <div class="w-full lg:w-5/12 text-white">
+                    <h2 class="text-3xl font-bold mb-6">با ما در ارتباط باشید</h2>
+                    <p class="text-blue-100 mb-8 leading-relaxed">
+                        برای دریافت مشاوره تحصیلی، اطلاع از شرایط ثبت‌نام و یا هماهنگی جهت بازدید از مدرسه، با ما تماس بگیرید. مشاوران ما صمیمانه پاسخگوی شما هستند.
+                    </p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-location-dot text-school-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">آدرس مدرسه</h4>
+                                <p class="text-sm text-blue-100">تهران، خیابان ولیعصر، نرسیده به تجریش، خیابان آموزش، پلاک ۱۲</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-phone text-school-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">شماره‌های تماس</h4>
+                                <p class="text-sm text-blue-100" dir="ltr">+98 21 1234 5678 <br> +98 21 8765 4321</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-envelope text-school-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">پست الکترونیک</h4>
+                                <p class="text-sm text-blue-100 font-sans">info@omidayandeh.school</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- فرم پیش ثبت نام -->
+                <div id="register" class="w-full lg:w-7/12 bg-white rounded-2xl p-6 lg:p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold text-school-dark mb-2">فرم درخواست پیش ثبت‌نام</h3>
+                    <p class="text-slate-500 text-sm mb-6">لطفاً اطلاعات زیر را تکمیل کنید تا کارشناسان ما با شما تماس بگیرند.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('اطلاعات شما با موفقیت ثبت شد. به زودی با شما تماس خواهیم گرفت.');">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">نام و نام خانوادگی دانش‌آموز</label>
+                                <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all" placeholder="مثلا: علی محمدی" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">پایه تحصیلی مورد تقاضا</label>
+                                <select class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all bg-white" required>
+                                    <option value="">انتخاب کنید...</option>
+                                    <option value="7">پایه هفتم (دوره اول)</option>
+                                    <option value="8">پایه هشتم (دوره اول)</option>
+                                    <option value="9">پایه نهم (دوره اول)</option>
+                                    <option value="10">پایه دهم (دوره دوم)</option>
+                                    <option value="11">پایه یازدهم (دوره دوم)</option>
+                                    <option value="12">پایه دوازدهم (دوره دوم)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">نام ولی / سرپرست</label>
+                                <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">شماره موبایل</label>
+                                <input type="tel" dir="ltr" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all text-right" placeholder="0912..." required>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-slate-700 mb-1">توضیحات تکمیلی (اختیاری)</label>
+                            <textarea rows="3" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-school-DEFAULT focus:border-school-DEFAULT outline-none transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-school-DEFAULT hover:bg-school-dark text-white font-bold py-3 rounded-lg shadow-md transition-colors">
+                            ثبت درخواست
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- درباره -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white text-xl">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h2 class="font-bold text-xl text-white">امید آینده</h2>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6">
+                        مدرسه‌ای برای ساختن فردا. ما با تمرکز بر آموزش نوین، تربیت صحیح و استعدادیابی، نسلی توانمند و با اخلاق را برای آینده ایران پرورش می‌دهیم.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-school-DEFAULT hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-school-DEFAULT hover:text-white transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-school-DEFAULT hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- دسترسی سریع -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                        دسترسی سریع
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-school-accent -mb-2 rounded-full"></span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> صفحه اصلی</a></li>
+                        <li><a href="#about" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> درباره مدرسه</a></li>
+                        <li><a href="#facilities" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> امکانات آموزشی</a></li>
+                        <li><a href="#news" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> اخبار و اطلاعیه‌ها</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-angle-left text-xs text-school-DEFAULT ml-2"></i> قوانین و مقررات</a></li>
+                    </ul>
+                </div>
+
+                <!-- لینک های مفید -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                        پیوندهای مفید
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-school-accent -mb-2 rounded-full"></span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-link text-xs text-school-DEFAULT ml-2"></i> وزارت آموزش و پرورش</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-link text-xs text-school-DEFAULT ml-2"></i> پورتال همگام</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-link text-xs text-school-DEFAULT ml-2"></i> شبکه آموزشی شاد</a></li>
+                        <li><a href="#" class="hover:text-white hover:translate-x-[-5px] inline-block transition-all"><i class="fa-solid fa-link text-xs text-school-DEFAULT ml-2"></i> سامانه سیدا</a></li>
+                    </ul>
+                </div>
+                
+                <!-- ساعات کاری -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 relative inline-block">
+                        ساعات کاری مدرسه
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-school-accent -mb-2 rounded-full"></span>
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>شنبه تا چهارشنبه</span>
+                            <span class="text-white font-sans" dir="ltr">07:00 - 15:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>پنجشنبه (کلاس‌های فوق‌برنامه)</span>
+                            <span class="text-white font-sans" dir="ltr">08:00 - 12:00</span>
+                        </li>
+                        <li class="flex justify-between text-rose-400 pb-2">
+                            <span>جمعه‌ها و ایام تعطیل</span>
+                            <span>تعطیل</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- کپی رایت -->
+            <div class="border-t border-slate-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; ۱۴۰۳ تمامی حقوق برای دبیرستان پسرانه امید آینده محفوظ است.</p>
+                <p class="mt-4 md:mt-0 text-slate-500">طراحی و توسعه با ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- کدهای جاوا اسکریپت -->
+    <script>
+        // کنترل منوی موبایل
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+
+        // بستن منوی موبایل با کلیک روی لینک ها
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // تغییر استایل هدر هنگام اسکرول
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('glass-nav', 'py-0');
+                navbar.classList.remove('py-2');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-0');
+                navbar.classList.add('py-2');
+            }
+        });
+
+        // انیمیشن شمارنده ها (اعداد)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 100; // سرعت پر شدن عدد
+
+        // استفاده از Intersection Observer برای اجرای انیمیشن فقط زمانی که عنصر دیده شود
+        const observeCounters = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 15);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    
+                    updateCount();
+                    observer.unobserve(counter); // توقف مانیتور کردن پس از اجرای انیمیشن
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            observeCounters.observe(counter);
+        });
+    </script>
+</body>
+</html>
